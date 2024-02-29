@@ -1,5 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        BalancedBrackets.main(null);
+        GeneticConverter.main(null);
+        PostfixGenerator.main(null);
     }
 }

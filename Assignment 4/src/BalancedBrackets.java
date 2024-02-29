@@ -1,36 +1,42 @@
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.Stack;
+
+import static java.lang.System.*;
 
 public class BalancedBrackets {
-
     public static void main(String[] args){
-        System.out.println(isBalanced("{[()]}"));
-        System.out.println(isBalanced("{[(])}"));
-        System.out.println(isBalanced("{{[[(())]]}}"));
+        String s1 = "{[()]}";
+        String s2 = "{[(])}";
+        String s3 = "{{[[(())]]}}";
+        out.println("BalancedBrackets.java");
+        out.println("Sample Input: " + s1 + " Is it balanced? " + isBalanced(s1));
+        out.println("Sample Input: " + s2 + " Is it balanced? " + isBalanced(s2));
+        out.println("Sample Input: " + s3 + " Is it balanced? " + isBalanced(s3));
     }
-
-    static String isBalanced(String s){
-        Deque<Character> deque = new LinkedList<>();
-        char temp = ' ';
-        if (s == null || ((s.length() % 2)!= 0)){
-            return "NO";
-        } else{
-            char[] ch = s.toCharArray();
-            for (char c: ch){
-                if (c == '{' || c == '[' || c == '('){
-                    deque.add(c);
-                } else{
-                    if (deque.size() != 0){
-                        temp = deque.peek();
-                        if ((temp == '{' & c == '}') || (temp == '[' & c == ']') || (temp == '(' & c == ')')){
-                            deque.remove();
-                        }
-                    }else{
-                        return "NO";
-                    }
+    private static String isBalanced(String s){
+        if (s.isEmpty()){
+            return "YES";
+        }
+        Stack<Character> stack = new Stack<Character>();
+        for (int i = 0; i < s.length(); i++){
+            char bracket = s.charAt(i);
+            if (bracket == '(' || bracket == '[' || bracket == '{') {
+                stack.push(bracket);
+            } else if((bracket == ')' || (bracket == ']') || (bracket == '}'))){
+                if(stack.isEmpty()){
+                    return "NO";
                 }
+                char temp = stack.peek();
+                if (bracket == ')' && temp == '(' || bracket == ']' && temp == '[' || bracket == '}' && temp == '{'){
+                    stack.pop();
+                }
+                else{
+                    return "NO";
                 }
             }
-        return "YES";
+        }
+        if (stack.isEmpty()){
+            return "YES";
+        }
+        return "NO";
     }
 }
