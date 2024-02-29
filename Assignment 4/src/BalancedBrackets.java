@@ -16,9 +16,10 @@ public class BalancedBrackets {
         if (s.isEmpty()){
             return "YES";
         }
-        Stack<Character> stack = new Stack<Character>();
+        char bracket;
+        Stack<Character> stack = new Stack<>();
         for (int i = 0; i < s.length(); i++){
-            char bracket = s.charAt(i);
+            bracket = s.charAt(i);
             if (bracket == '(' || bracket == '[' || bracket == '{') {
                 stack.push(bracket);
             } else if((bracket == ')' || (bracket == ']') || (bracket == '}'))){
