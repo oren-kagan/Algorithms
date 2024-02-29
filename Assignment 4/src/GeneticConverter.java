@@ -1,4 +1,3 @@
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -15,21 +14,24 @@ public class GeneticConverter {
         out.println("Sample Input: " + s3 + " What are the equivalent proteins? " + RNAtoProtein(DNAtoRNA(s3)));
     }
     private static String DNAtoRNA(String DNA){
-        String RNA = "";
-        char temp = '\0';
+        StringBuilder RNA = new StringBuilder();
+        Queue<Character> q = new LinkedList<>();
         for (int i = 0; i < DNA.length(); i++){
-            temp = DNA.charAt(i);
-            if (temp == 'A' || temp== 'C' || temp == 'G'){
-                RNA += temp;
-            } else {
-                RNA += 'U';
+            q.add(DNA.charAt(i));
+        }
+        while(!q.isEmpty()){
+            if (q.peek() == 'T'){
+                q.remove();
+                RNA.append('U');
+            } else{
+                RNA.append(q.remove());
             }
         }
-        return RNA;
+        return RNA.toString();
     }
     private static String RNAtoProtein(String RNA){
         StringBuilder proteins = new StringBuilder();
-        Queue<Character> q = new LinkedList<Character>();
+        Queue<Character> q = new LinkedList<>();
         for(int i = 0; i < RNA.length(); i++){
             q.add(RNA.charAt(i));
         }
