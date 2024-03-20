@@ -17,6 +17,7 @@ public class Main {
         for(int i = 1; i <= A.length; i++){
             while ((tempSum > K) && (firstIndex < i -1)){
                 tempSum = tempSum - A[firstIndex];
+                System.out.println(i);
                 firstIndex++;
             }
             if (tempSum == K){
