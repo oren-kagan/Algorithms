@@ -13,6 +13,7 @@ public class subInteger {
     public String subIntegerDecider(int[] S, int[] T){
         if (S.length > T.length) return "No";
         HashMap<Integer, Integer> map = new HashMap<>();
+
         for (int num: T){
             map.put(num, 1);
         }
