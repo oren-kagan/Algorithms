@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -58,10 +57,11 @@ public class Election {
         System.out.print("\n");
     }
     public void auditElection(){
-        if (maxHeap != null) {
+        MaxHeap tmpMax = maxHeap;
+        if (tmpMax != null) {
             System.out.println("Votes for everyone in the race thus far!");
-            for (int i = 0; i < maxHeap.getSize(); i++) {
-                System.out.println(maxHeap.getCandidate(i).toString());
+            for (int i = 0; i < tmpMax.getSize(); i++) {
+                System.out.println(tmpMax.extractMax().toString());
             }
         }
     }
