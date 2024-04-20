@@ -5,7 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class ElectionSystem {
     public static void main(String[] args) {
         randomElection();
-//        orchestratedElection();
+        orchestratedElection();
     }
     public static void orchestratedElection(){
         Election e = new Election();
